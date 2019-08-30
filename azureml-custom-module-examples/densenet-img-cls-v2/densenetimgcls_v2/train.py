@@ -114,7 +114,6 @@ def train(model, train_set, valid_set, save_path, epochs, batch_size,
         if early_stop:
             break
 
-
 def entrance(model_path='pretrained', data_path='', save_path='saved_model', label_map_path='saved_path',
              model_type='densenet201', pretrained=True, memory_efficient=False,
              num_classes=2, epochs=100, batch_size=16, learning_rate=0.001, random_seed=231, patience=2):
@@ -137,6 +136,7 @@ def entrance(model_path='pretrained', data_path='', save_path='saved_model', lab
     current_dir = os.path.dirname(os.path.realpath(__file__))
     dependencies = [os.path.join(current_dir, filename) for filename in ["densenet.py", "utils.py"]]
     save_model(model, save_path, dependencies=dependencies)
+    os.makedirs(label_map_path, exist_ok=True)
     copyfile(os.path.join(data_path, 'index_to_label.json'), os.path.join(label_map_path, 'index_to_label.json'))
     logger.info('This experiment has been completed.')
 
