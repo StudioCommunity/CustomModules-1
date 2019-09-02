@@ -133,9 +133,10 @@ def entrance(model_path='pretrained', data_path='', save_path='saved_model', lab
           save_path=save_path, epochs=epochs, batch_size=batch_size, lr=learning_rate,
           random_seed=random_seed, patience=patience)
 
-    current_dir = os.path.dirname(os.path.realpath(__file__))
-    dependencies = [os.path.join(current_dir, filename) for filename in ["densenet.py", "utils.py"]]
-    save_model(model, save_path, dependencies=dependencies)
+    # current_dir = os.path.dirname(os.path.realpath(__file__))
+    # dependencies = [os.path.join(current_dir, filename) for filename in ["densenet.py", "utils.py"]]
+    # save_model(model, save_path, dependencies=dependencies)
+    save_model(model, save_path, dependencies=[])
     os.makedirs(label_map_path, exist_ok=True)
     copyfile(os.path.join(data_path, 'index_to_label.json'), os.path.join(label_map_path, 'index_to_label.json'))
     logger.info('This experiment has been completed.')
