@@ -197,7 +197,9 @@ def entrance(input_model_path='../init_model',
             {
                 "pip": [
                     "git+https://github.com/StudioCommunity/CustomModules-1.git@master#subdirectory=azureml-custom-module-examples/image-classification",
-                    "fire==0.1.3"
+                    "fire==0.1.3",
+                    "azureml-designer-core[image]==0.0.25.post7829218",
+                    "azureml-defaults"
                     ]
             }
         ]
