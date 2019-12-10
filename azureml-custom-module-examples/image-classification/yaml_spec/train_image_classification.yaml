@@ -1,6 +1,6 @@
-name: Test Version Train Image Classification
+name: Test Version Train Full Dependencies
 id: 5e968de0-d172-4526-a319-0d8ca5bd4eb6
-version: 0.0.0.3
+version: 0.0.0.9
 isDeterministic: true
 category: Image Classification
 description: Train image classification model from scratch or finetune it.
@@ -19,7 +19,7 @@ inputs:
   description: Valid data path.
 - name: Epochs
   type: Int
-  default: 40
+  default: 3
   description: Epochs.
 - name: Batch size
   type: Int

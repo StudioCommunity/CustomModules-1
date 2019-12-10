@@ -192,14 +192,25 @@ def entrance(train_data_path='/mnt/chjinche/data/out_transform_train/',
                   patience=patience)
     # Save model file, configs and install dependencies
     # TODO: designer.model could support pathlib.Path
-    local_dependencies = [str(Path(__file__).parent.parent)]
-    logger.info(f'Ouput local dependencies {local_dependencies}')
+    conda = {
+        "dependencies": [
+            {
+                "pip": [
+                    "azureml-defaults",
+                    "azureml-designer-core[image]==0.0.25.post7829218",
+                    "fire==0.1.3",
+                    "git+https://github.com/StudioCommunity/CustomModules-1.git@master#subdirectory=azureml-custom-module-examples/image-classification",
+                    "--extra-index-url=https://azureml-modules:3nvdtawseij7o2oenxojj35c43i5lu2ucf77pugohh4g5eqn6xnq@msdata.pkgs.visualstudio.com/_packaging/azureml-modules%40Local/pypi/simple/"
+                ]
+            }
+        ]
+    }
     save_pytorch_state_dict_model(model,
                                   init_params=model_config,
                                   path=save_model_path,
                                   task_type=TaskType.MultiClassification,
                                   label_map=id_to_class_dict,
-                                  local_dependencies=local_dependencies)
+                                  conda=conda)
     logger.info('This experiment has been completed.')
 
 

@@ -196,11 +196,12 @@ def entrance(input_model_path='../init_model',
         "dependencies": [
             {
                 "pip": [
-                    "git+https://github.com/StudioCommunity/CustomModules-1.git@master#subdirectory=azureml-custom-module-examples/image-classification",
-                    "fire==0.1.3",
+                    "azureml-defaults",
                     "azureml-designer-core[image]==0.0.25.post7829218",
-                    "azureml-defaults"
-                    ]
+                    "fire==0.1.3",
+                    "git+https://github.com/StudioCommunity/CustomModules-1.git@master#subdirectory=azureml-custom-module-examples/image-classification",
+                    "--extra-index-url=https://azureml-modules:3nvdtawseij7o2oenxojj35c43i5lu2ucf77pugohh4g5eqn6xnq@msdata.pkgs.visualstudio.com/_packaging/azureml-modules%40Local/pypi/simple/"
+                ]
             }
         ]
     }
