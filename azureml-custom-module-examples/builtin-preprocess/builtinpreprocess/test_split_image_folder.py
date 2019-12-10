@@ -6,6 +6,7 @@ import fire
 
 def split_image_folder(src_path, tgt_train_path, tgt_test_path, thre):
     for j, subdir in enumerate(os.listdir(src_path)):
+        print(f'Split {subdir}')
         src_sub_path = os.path.join(src_path, subdir)
         if not os.path.isdir(src_sub_path):
             continue
@@ -20,17 +21,18 @@ def split_image_folder(src_path, tgt_train_path, tgt_test_path, thre):
             src_pic_path = os.path.join(src_sub_path, pic)
             if not os.path.isfile(src_pic_path):
                 continue
-            if i < int(n*thre):
+            if i < int(n * thre):
                 copyfile(src_pic_path, os.path.join(tgt_train_pic_dir, pic))
             else:
                 copyfile(src_pic_path, os.path.join(tgt_test_pic_dir, pic))
 
 
-def entrance(src_path='', thre=0.9, tgt_more_path='', tgt_less_path=''):
-    split_image_folder(src_path, tgt_more_path, tgt_less_path, thre)
-    # workaround for postprocess
-    copyfile(os.path.join(src_path, 'index_to_label.json'), os.path.join(tgt_more_path, 'index_to_label.json'))
-    copyfile(os.path.join(src_path, 'index_to_label.json'), os.path.join(tgt_less_path, 'index_to_label.json'))
+def entrance(src_path='/mnt/chjinche/data/output_transformed/',
+             thre=0.9,
+             tgt_train_path='/mnt/chjinche/data/output_transformed_train/',
+             tgt_test_path='/mnt/chjinche/data/output_transformed_test/'):
+    print('Start!')
+    split_image_folder(src_path, tgt_train_path, tgt_test_path, thre)
     print('Finished')
 
 
