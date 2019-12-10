@@ -194,7 +194,12 @@ def entrance(input_model_path='../init_model',
     # TODO: designer.model could support pathlib.Path
     conda = {
         "dependencies": [
-            {"pip": ["git+https://github.com/StudioCommunity/CustomModules-1.git@master#subdirectory=azureml-custom-module-examples/image-classification"]}
+            {
+                "pip": [
+                    "git+https://github.com/StudioCommunity/CustomModules-1.git@master#subdirectory=azureml-custom-module-examples/image-classification",
+                    "fire==0.1.3"
+                    ]
+            }
         ]
     }
     save_pytorch_state_dict_model(model,

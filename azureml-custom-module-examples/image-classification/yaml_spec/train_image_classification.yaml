@@ -1,6 +1,6 @@
 name: Test Version Train Image Classification
 id: 5e968de0-d172-4526-a319-0d8ca5bd4eb6
-version: 0.0.1.2
+version: 0.0.0.3
 isDeterministic: true
 category: Image Classification
 description: Train image classification model from scratch or finetune it.
