@@ -192,14 +192,17 @@ def entrance(input_model_path='../init_model',
                   patience=patience)
     # Save model file, configs and install dependencies
     # TODO: designer.model could support pathlib.Path
-    local_dependencies = [str(Path(__file__).parent.parent)]
-    logger.info(f'Ouput local dependencies {local_dependencies}.')
+    conda = {
+        "dependencies": [
+            {"pip": ["git+https://github.com/StudioCommunity/CustomModules-1.git@master#subdirectory=azureml-custom-module-examples/image-classification"]}
+        ]
+    }
     save_pytorch_state_dict_model(model,
                                   init_params=model_config,
                                   path=save_model_path,
                                   task_type=TaskType.MultiClassification,
                                   label_map=id_to_class_dict,
-                                  local_dependencies=local_dependencies)
+                                  conda=conda)
     logger.info('This experiment has been completed.')
 
 
