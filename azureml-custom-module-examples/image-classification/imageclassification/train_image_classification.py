@@ -205,6 +205,7 @@ def entrance(input_model_path='../init_model',
             }
         ]
     }
+    logger.info(f"Saving with conda: {conda}")
     save_pytorch_state_dict_model(model,
                                   init_params=model_config,
                                   path=save_model_path,
